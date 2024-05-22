@@ -1,0 +1,8 @@
+.modal__contents {
+  background-color: white;
+  position: relative;
+  width: 496px;
+  max-height: 610px;
+  box-sizing: border-box;
+  border-radius: 15px;
+}
