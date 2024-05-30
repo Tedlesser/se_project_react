@@ -1,4 +1,4 @@
-texport const weatherOptions = [
+export const weatherOptions = [
   {
     day: true,
     condition: "clear",
