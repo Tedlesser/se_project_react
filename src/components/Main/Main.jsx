@@ -18,7 +18,9 @@ function Main({weatherData, onCardClick}) {
         return item.weather === weatherData.type;
         })
         .map((item) => {
-          return <ItemCard  key={item._id} item={item} onCardClick={onCardClick}/>
+          return (
+           <ItemCard  key={item._id} item={item} onCardClick={onCardClick}/>
+          );
         })}
       </ul>
     </main>

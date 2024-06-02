@@ -1,3 +1,8 @@
+@font-face {
+  src: url("../../fonts/CabinetGrotesk-Regular.woff");
+  font-family: "Cabinet Grotesk";
+}
+
 .modal {
   position: fixed;
   top: 0;
@@ -24,7 +29,7 @@
 .modal__title {
   padding-bottom: 30px;
   margin: 0;
-  font-family: Cabinet Grotesk;
+  font-family: "Cabinet Grotesk";
   font-size: 16px;
   font-weight: 700;
   line-height: 20px;
@@ -47,7 +52,7 @@
 }
 
 .modal__caption {
-  font-family: Cabinet Grotesk;
+  font-family: "Cabinet Grotesk";
   font-size: 20px;
   font-weight: 700;
   line-height: 24px;
@@ -57,9 +62,9 @@
 }
 
 .modal__weather {
-  padding: 0 28px;
+  padding: 0 28px 28px;
   margin: 0;
-  font-family: Cabinet Grotesk;
+  font-family: "Cabinet Grotesk";
   font-size: 20px;
   font-weight: 700;
   line-height: 24px;
@@ -73,7 +78,7 @@
 }
 
 .modal__label {
-  font-family: Cabinet Grotesk;
+  font-family: "Cabinet Grotesk";
   font-size: 16px;
   font-weight: 700;
   line-height: 20px;
@@ -112,4 +117,18 @@
   width: 20px;
   height: 20px;
   background-image: url(../../assets/Close-Icon.png);
+}
+
+.modal__submit {
+  width: 124px;
+  height: 36px;
+  top: 557px;
+  left: 500px;
+  gap: 12px;
+  opacity: 0px;
+  background-color: rgb(172, 171, 171);
+  border: none;
+  font-family: "Cabinet Grotesk";
+  color: white;
+  border-radius: 5px;
 }
