@@ -1,7 +1,21 @@
 .footer {
-    display: flex;
-    justify-content: space-between;
-    padding: 28px;
+  display: flex;
+  justify-content: space-between;
+  padding: 28px;
 }
 
+.footer__developed_by {
+  font-family: "Cabinet Grotesk";
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  text-align: left;
+}
 
+.footer__year {
+  font-family: "Cabinet Grotesk";
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  text-align: right;
+}

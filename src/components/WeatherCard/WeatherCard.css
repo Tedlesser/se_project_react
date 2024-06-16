@@ -7,6 +7,10 @@
 }
 
 .weather-card__temp {
+    font-family: "Cabinet Grotesk";
+    color: white;
+    font-weight: 700;
+    text-align: left;
     font-size: 36px;
     line-height: 40px;
     margin: 0;

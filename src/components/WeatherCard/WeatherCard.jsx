@@ -1,7 +1,8 @@
 import "./WeatherCard.css";
 import { defaultWeatherOptions, weatherOptions } from "../../utils/constants";
-
+import currentTemperatureUnitContext from "../../context/CurrentTemperatureUnitContext";
 import sunny from "../../assets/Day/clear.png";
+
 
 function WeatherCard({ weatherData }) {
   const filteredOptions = weatherOptions.filter((option) => {
@@ -20,7 +21,7 @@ function WeatherCard({ weatherData }) {
 
   return (
     <section className="weather-card">
-      <p className="weather-card__temp">{weatherData.temp.F} &deg; F</p>
+      <p className="weather-card__temp">{weatherData.temp?.[currentTemperatureUnitContext]}</p>
       <img
         src={weatherOption?.url}
         alt={`Card showing ${weatherOption?.day ? "day" : "night"} ${
