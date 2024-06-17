@@ -112,6 +112,7 @@ function App() {
                 <Profile
                   onCardClick={onCardClick}
                   clothingItems={clothingItems}
+                  onClose={closeActiveModal}
                 />
               }
             />
