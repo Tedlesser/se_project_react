@@ -13,6 +13,7 @@ import CurrentTemperatureUnitContext from "../../context/CurrentTemperatureUnitC
 import AddItemModal from "../AddItemModal/AddItemModal";
 import Profile from "../Profile/Profile";
 import api from "../../utils/api";
+import DeleteConfirmModal from "../DeleteConfirmModal/DeleteConfirmModal";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -34,9 +35,9 @@ function App() {
     setActiveModal("add-garment");
   };
 
-  const onAddItem = (values) => {
-    console.log(values);
-  };
+  // const onAddItem = (values) => {
+  //   console.log(values);
+  // };
 
   const closeActiveModal = () => {
     setActiveModal("");
@@ -49,6 +50,7 @@ function App() {
 
   const handleAddItemSubmit = (item) => {
     api
+      console.log("yeah yeah yeah")
       .addItems(item)
       .then((newItem) => {
         setClothingItems([newItem, ...clothingItems]);
@@ -120,14 +122,21 @@ function App() {
         </div>
         <AddItemModal
           activeModal={activeModal}
-          onClose={closeActiveModal}
-          onAddItem={onAddItem}
+          closeActiveModal={closeActiveModal}
+          onSubmit={onAddButtonClick}
         />
         <ItemModal
           activeModal={activeModal}
           card={selectedCard}
           onClose={closeActiveModal}
         />
+        {activeModal === "delete-garment" && (
+          <DeleteConfirmModal
+            activeModal={activeModal}
+            closeActiveModal={closeActiveModal}
+            onDelete={handleCardDelete}
+          />
+        )}
         <Footer />
       </CurrentTemperatureUnitContext.Provider>
     </div>
