@@ -35,10 +35,6 @@ function App() {
     setActiveModal("add-garment");
   };
 
-  // const onAddItem = (values) => {
-  //   console.log(values);
-  // };
-
   const closeActiveModal = () => {
     setActiveModal("");
   };
@@ -48,10 +44,9 @@ function App() {
     if (currentTemperatureUnit === "F") setCurrentTemperatureUnit("C");
   };
 
-  const handleAddItemSubmit = (item) => {
+  const handleAddItemSubmit = ({name, imageUrl}) => {
     api
-      console.log("yeah yeah yeah")
-      .addItems(item)
+      .addItems({name , imageUrl})
       .then((newItem) => {
         setClothingItems([newItem, ...clothingItems]);
         closeActiveModal();
@@ -124,6 +119,7 @@ function App() {
           activeModal={activeModal}
           closeActiveModal={closeActiveModal}
           onSubmit={onAddButtonClick}
+          handleAddItemSubmit={handleAddItemSubmit}
         />
         <ItemModal
           activeModal={activeModal}

@@ -7,7 +7,7 @@ function DeleteConfirmModal({ activeModal, closeActiveModal, onDelete }) {
     >
       <div className="modal__content modal_content_type_delete">
         <button
-          onClick={handleCloseClick}
+          onClick={closeActiveModal}
           className="modal__close"
           type="button"
         ></button>
