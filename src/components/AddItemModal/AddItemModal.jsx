@@ -15,7 +15,7 @@ const AddItemModal = ({
     setName(e.target.value);
   };
 
-  const [Url, setUrl] = useState("");
+  const [imageUrl, setUrl] = useState("");
   const handleUrlChange = (e) => {
     console.log(e.target.value);
     setUrl(e.target.value);
@@ -53,7 +53,7 @@ const AddItemModal = ({
           className="modal__input"
           id="imageUrl"
           placeholder="Image URL"
-          value={Url}
+          value={imageUrl}
           onChange={handleUrlChange}
         />
       </label>
