@@ -1,5 +1,6 @@
 import "./ItemModal.css";
 import DeleteConfirmModal from "../DeleteConfirmModal/DeleteConfirmModal"
+import React, { useState } from 'react';
 
 function ItemModal({ activeModal, card, onClose, deleteConfirmModal }) {
   return (
@@ -18,7 +19,7 @@ function ItemModal({ activeModal, card, onClose, deleteConfirmModal }) {
           </div>
           <button
             type="button"
-            onClick={DeleteConfirmModal}
+            onClick={deleteConfirmModal}
             className="delete-card"
           >
             Delete Card
