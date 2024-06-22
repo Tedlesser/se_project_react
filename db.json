@@ -143,6 +143,24 @@
     },
     {
       "_id": 30
+    },
+    {
+      "_id": 31
+    },
+    {
+      "name": "Pants",
+      "imageUrl": "https://shop.lululemon.com/p/mens-trousers/ABC-Slim-Fit-Golf-Trouser-34L/_/prod11680026?color=34282&locale=en_US&sl=US&sz=34&cid=Google_PMAX_US_NAT_EN_M_Hybrid_Men-Bottoms_OMNI_GEN_Y22_ag-&gad_source=1&gclid=CjwKCAjwmrqzBhAoEiwAXVpgojUjqv6AEVWgorBgUwwN0ySsdAqYLNZUaT-iX3XBnHHcDX9rVOwgfhoCGWcQAvD_BwE&gclsrc=aw.ds",
+      "_id": 32
+    },
+    {
+      "name": "Pants",
+      "imageUrl": "https://jungmaven.com/cdn/shop/files/Ocean-Pants_Navy.jpg?v=1705083770",
+      "_id": 33
+    },
+    {
+      "name": "Pants",
+      "imageUrl": "https://jungmaven.com/cdn/shop/files/Ocean-Pants_Navy.jpg?v=1705083770",
+      "_id": 34
     }
   ]
 }

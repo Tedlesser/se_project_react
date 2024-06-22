@@ -4,7 +4,6 @@ import App from "../App/App";
 
 const AddItemModal = ({
   activeModal,
-  onAddItem,
   closeActiveModal,
   onSubmit,
   handleAddItemSubmit,

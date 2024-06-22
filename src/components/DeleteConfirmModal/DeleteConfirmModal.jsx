@@ -1,12 +1,12 @@
 import "./DeleteConfirmModal.css";
 
-function DeleteConfirmModal({ activeModal, closeActiveModal, onDelete }) {
+function DeleteConfirmModal({ activeModal, closeActiveModal, onDelete, isOpen}) {
   return (
     <div
-      className={`modal ${activeModal === "delete-garment" && "modal_opened"}`}
+      className={`modal ${isOpen && "modal_opened"}`}
     >
       <div className="modal__content modal_content_type_delete">
-        <button
+        <button 
           onClick={closeActiveModal}
           className="modal__close"
           type="button"

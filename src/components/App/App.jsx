@@ -100,6 +100,7 @@ function App() {
                   onCardClick={onCardClick}
                   clothingItems={clothingItems}
                   onClose={closeActiveModal}
+                  handleCardDelete={handleCardDelete}
                 />
               }
             />

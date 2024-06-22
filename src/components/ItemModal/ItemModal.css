@@ -6,3 +6,37 @@
   box-sizing: border-box;
   border-radius: 15px;
 }
+
+.modal__delete {
+  border: none;
+  display: flex;
+}
+
+.modal__image {
+  height: 498px;
+  width: 498px;
+}
+
+.modal__footer {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  row-gap: 12px;
+}
+
+.delete-card { 
+  font-family: "Cabinet Grotesk", Arial, sans-serif;
+  font-size: 20px;
+  line-height: 24px; 
+  top: 25%;
+  left: 75%;
+  margin-left: auto;
+  border: none;
+  background-color: transparent;
+  padding-right: 28px; 
+  color: red;
+}
+
+.delete-card:hover {
+  opacity: 0.6;
+}

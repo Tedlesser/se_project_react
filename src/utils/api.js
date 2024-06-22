@@ -18,12 +18,12 @@ function addItems({ name, imageUrl, weather }) {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      body: JSON.stringify({
-        name,
-        weather,
-        imageUrl,
-      }),
     },
+    body: JSON.stringify({
+      name,
+      weather,
+      imageUrl,
+    }),
   }).then(handleServerResponse);
 }
 
