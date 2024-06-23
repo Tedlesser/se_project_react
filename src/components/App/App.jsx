@@ -18,7 +18,7 @@ import DeleteConfirmModal from "../DeleteConfirmModal/DeleteConfirmModal";
 function App() {
   const [weatherData, setWeatherData] = useState({
     type: "",
-    temp: { F: 999, C: 999 },
+    temp: { F: 999, C: 999 }
     city: "",
   });
   const [activeModal, setActiveModal] = useState("");
@@ -36,7 +36,7 @@ function App() {
   };
 
   const deleteConfirmModal = () => {
-    setActiveModal("confirm-delete");
+    setActiveModal("delete-garment");
   };
 
   const closeActiveModal = () => {
@@ -48,9 +48,9 @@ function App() {
     if (currentTemperatureUnit === "F") setCurrentTemperatureUnit("C");
   };
 
-  const handleAddItemSubmit = ({name, imageUrl}) => {
+  const handleAddItemSubmit = ({ name, imageUrl }) => {
     api
-      .addItems({name , imageUrl})
+      .addItems({ name, imageUrl })
       .then((newItem) => {
         setClothingItems([newItem, ...clothingItems]);
         closeActiveModal();
@@ -132,13 +132,12 @@ function App() {
           onClose={closeActiveModal}
           onClick={deleteConfirmModal}
         />
-        {activeModal === "delete-garment" && (
-          <DeleteConfirmModal
-            activeModal={activeModal}
-            closeActiveModal={closeActiveModal}
-            onDelete={handleCardDelete}
-          />
-        )}
+        <DeleteConfirmModal
+          isOpen={activeModal === "delete-garment"}
+          closeActiveModal={closeActiveModal}
+          onDelete={handleCardDelete}
+        />
+
         <Footer />
       </CurrentTemperatureUnitContext.Provider>
     </div>

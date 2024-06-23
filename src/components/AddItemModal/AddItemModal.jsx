@@ -30,7 +30,7 @@ const AddItemModal = ({
     <ModalWithForm
       title="New Garment"
       buttonText="Add garment"
-      isOpen={activeModal}
+      isOpen={activeModal === "add-garment"}
       onClose={closeActiveModal}
       onSubmit={handleSubmit}
     >
