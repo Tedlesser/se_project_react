@@ -2,7 +2,7 @@ import "./ItemModal.css";
 import DeleteConfirmModal from "../DeleteConfirmModal/DeleteConfirmModal"
 import React, { useState } from 'react';
 
-function ItemModal({ activeModal, card, onClose, deleteConfirmModal }) {
+function ItemModal({ activeModal, card, onClose, onClick }) {
   return (
     <div className={`modal ${activeModal === "preview" && "modal_opened"}`}>
       <div className="modal__contents modal__content_type_image">
@@ -19,7 +19,7 @@ function ItemModal({ activeModal, card, onClose, deleteConfirmModal }) {
           </div>
           <button
             type="button"
-            onClick={deleteConfirmModal}
+            onClick={onClick}
             className="delete-card"
           >
             Delete Card

@@ -35,6 +35,10 @@ function App() {
     setActiveModal("add-garment");
   };
 
+  const deleteConfirmModal = () => {
+    setActiveModal("modal__delete");
+  };
+
   const closeActiveModal = () => {
     setActiveModal("");
   };
@@ -126,6 +130,7 @@ function App() {
           activeModal={activeModal}
           card={selectedCard}
           onClose={closeActiveModal}
+          onClick={deleteConfirmModal}
         />
         {activeModal === "delete-garment" && (
           <DeleteConfirmModal
