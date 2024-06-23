@@ -36,7 +36,7 @@ function App() {
   };
 
   const deleteConfirmModal = () => {
-    setActiveModal("modal__delete");
+    setActiveModal("confirm-delete");
   };
 
   const closeActiveModal = () => {
