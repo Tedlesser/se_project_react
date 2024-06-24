@@ -1,9 +1,9 @@
 import "./DeleteConfirmModal.css";
 
-function DeleteConfirmModal({ activeModal, closeActiveModal, onDelete, isOpen}) {
+function DeleteConfirmModal({ activeModal, closeActiveModal, handleCardDelete, isOpen}) {
   return (
     <div
-      className={`modal ${activeModal === "confirm-delete" && "modal_opened"}`}
+      className={`modal ${isOpen && "modal_opened"}`}
     >
       <div className="modal__content modal_content_type_delete">
         <button 
@@ -15,7 +15,7 @@ function DeleteConfirmModal({ activeModal, closeActiveModal, onDelete, isOpen}) 
           Are you sure, you want to delete this item? 
         </p>
         <button
-          onClick={onDelete}
+          onClick={handleCardDelete}
           className="modal__delete-confirm"
           type="submit"
         >
