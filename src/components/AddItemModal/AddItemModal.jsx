@@ -5,7 +5,6 @@ import App from "../App/App";
 const AddItemModal = ({
   activeModal,
   closeActiveModal,
-  onSubmit,
   handleAddItemSubmit,
 }) => {
   const [name, setName] = useState("");

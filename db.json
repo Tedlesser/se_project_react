@@ -1,28 +1,10 @@
 {
   "items": [
     {
-      "_id": 0,
-      "name": "Beanie",
-      "weather": "cold",
-      "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Beanie.png?etag=bc10497cc80fa557f036e94f9999f7b2"
-    },
-    {
-      "_id": 1,
-      "name": "Boot",
-      "weather": "cold",
-      "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Boot.png?etag=0953a2ea59f1c6ebc832fabacdc9c70e"
-    },
-    {
       "_id": 2,
       "name": "Cap",
       "weather": "hot",
       "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Cap.png?etag=f3dad389b22909cafa73cff9f9a3d591"
-    },
-    {
-      "_id": 3,
-      "name": "Coat",
-      "weather": "cold",
-      "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Coat.png?etag=298717ed89d5e40b1954a1831ae0bdd4"
     },
     {
       "_id": 4,
@@ -101,61 +83,6 @@
       "name": "T-Shirt",
       "weather": "hot",
       "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/T-Shirt.png?etag=44ed1963c44ab19cd2f5011522c5fc09"
-    },
-    {
-      "_id": 17
-    },
-    {
-      "_id": 18
-    },
-    {
-      "_id": 19
-    },
-    {
-      "_id": 20
-    },
-    {
-      "_id": 21
-    },
-    {
-      "_id": 22
-    },
-    {
-      "_id": 23
-    },
-    {
-      "_id": 24
-    },
-    {
-      "_id": 25
-    },
-    {
-      "_id": 26
-    },
-    {
-      "_id": 27
-    },
-    {
-      "_id": 28
-    },
-    {
-      "_id": 29
-    },
-    {
-      "_id": 30
-    },
-    {
-      "_id": 31
-    },
-    {
-      "name": "Pants",
-      "imageUrl": "https://shop.lululemon.com/p/mens-trousers/ABC-Slim-Fit-Golf-Trouser-34L/_/prod11680026?color=34282&locale=en_US&sl=US&sz=34&cid=Google_PMAX_US_NAT_EN_M_Hybrid_Men-Bottoms_OMNI_GEN_Y22_ag-&gad_source=1&gclid=CjwKCAjwmrqzBhAoEiwAXVpgojUjqv6AEVWgorBgUwwN0ySsdAqYLNZUaT-iX3XBnHHcDX9rVOwgfhoCGWcQAvD_BwE&gclsrc=aw.ds",
-      "_id": 32
-    },
-    {
-      "name": "Pants",
-      "imageUrl": "https://jungmaven.com/cdn/shop/files/Ocean-Pants_Navy.jpg?v=1705083770",
-      "_id": 33
     },
     {
       "name": "Pants",

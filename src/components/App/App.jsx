@@ -60,10 +60,11 @@ function App() {
 
   const handleCardDelete = () => {
     api
-      .removeItems(selectedCard.id)
-      .then(setClothingItems((cards) => cards.filter((c) => c.id !== selectedCard.id))
+      .removeItems(selectedCard._id)
+      .then(setClothingItems((cards) => cards.filter((c) => c._id !== selectedCard._id))
       )
       .catch(console.error);
+      closeActiveModal();
   };
 
   useEffect(() => {
