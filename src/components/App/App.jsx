@@ -58,12 +58,11 @@ function App() {
       .catch(console.error);
   };
 
-  const handleCardDelete = (card) => {
+  const handleCardDelete = () => {
     api
-      .removeItems(card.id)
-      .then(() => {
-        setClothingItems((cards) => filter((c) => c.id !== card.id));
-      })
+      .removeItems(selectedCard.id)
+      .then(setClothingItems((cards) => cards.filter((c) => c.id !== selectedCard.id))
+      )
       .catch(console.error);
   };
 
@@ -135,7 +134,7 @@ function App() {
         <DeleteConfirmModal
           isOpen={activeModal === "delete-garment"}
           closeActiveModal={closeActiveModal}
-          onDelete={handleCardDelete}
+          handleCardDelete={handleCardDelete}
         />
 
         <Footer />
