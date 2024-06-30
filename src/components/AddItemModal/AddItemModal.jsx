@@ -19,9 +19,15 @@ const AddItemModal = ({
     setUrl(e.target.value);
   };
 
+  const [weather, setWeather] = useState("");
+  const handleWeatherChange = (e) => {
+    console.log(e.target.value);
+    setWeather(e.target.value);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleAddItemSubmit({ name, imageUrl});
+    handleAddItemSubmit({ name, imageUrl, weather});
     closeActiveModal();
   };
 
