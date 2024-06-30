@@ -87,12 +87,17 @@
     {
       "name": "Pants",
       "imageUrl": "https://jungmaven.com/cdn/shop/files/Ocean-Pants_Navy.jpg?v=1705083770",
-      "_id": 34
+      "_id": 35
     },
     {
       "name": "Pants",
       "imageUrl": "https://jungmaven.com/cdn/shop/files/Ocean-Pants_Navy.jpg?v=1705083770",
-      "_id": 35
+      "_id": 36
+    },
+    {
+      "name": "Pants",
+      "imageUrl": "https://jungmaven.com/cdn/shop/files/Ocean-Pants_Navy.jpg?v=1705083770",
+      "_id": 37
     }
   ]
 }

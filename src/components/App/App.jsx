@@ -115,6 +115,7 @@ function App() {
                   onCardClick={onCardClick}
                   clothingItems={clothingItems}
                   onClose={closeActiveModal}
+                  onAddButtonClick={onAddButtonClick}
                 />
               }
             />
