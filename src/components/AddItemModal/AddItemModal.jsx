@@ -69,7 +69,7 @@ const AddItemModal = ({
             type="radio"
             className="modal__radio-input"
             name="radio"
-            value="Hot"
+            value="hot"
             onChange={handleWeatherChange}
           />{" "}
           Hot
@@ -80,7 +80,7 @@ const AddItemModal = ({
             type="radio"
             className="modal__radio-input"
             name="radio"
-            value="Warm"
+            value="warm"
             onChange={handleWeatherChange}
           />{" "}
           Warm
@@ -91,7 +91,7 @@ const AddItemModal = ({
             type="radio"
             className="modal__radio-input"
             name="radio"
-            value="Cold"
+            value="cold"
             onChange={handleWeatherChange}
           />{" "}
           Cold
