@@ -61,10 +61,15 @@ function App() {
   const handleCardDelete = () => {
     api
       .removeItems(selectedCard._id)
-      .then(setClothingItems((cards) => cards.filter((c) => c._id !== selectedCard._id))
-      )
-      .catch(console.error);
-      closeActiveModal();
+      .then(() => {
+        setClothingItems((cards) =>
+          cards.filter((c) => c._id !== selectedCard._id)
+        );
+      })
+      .catch(console.error)
+      .finally(() => {
+        closeActiveModal();
+      });
   };
 
   useEffect(() => {
