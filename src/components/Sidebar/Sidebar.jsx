@@ -1,11 +1,13 @@
 import avatar from "../../assets/avatar.png";
-import "./Sidebar.css"
+import "./Sidebar.css";
 
 function Sidebar() {
-    return <div className="sidebar">
-        <img className="sidebar__avatar" src={avatar} alt="Default avatar" />
-        <p className="sidebar__username">Username</p>
+  return (
+    <div className="sidebar">
+      <img className="sidebar__avatar" src={avatar} alt="Default avatar" />
+      <p className="sidebar__username">Username</p>
     </div>
+  );
 }
 
 export default Sidebar;

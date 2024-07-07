@@ -27,7 +27,7 @@ const AddItemModal = ({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleAddItemSubmit({ name, imageUrl, weather});
+    handleAddItemSubmit({ name, imageUrl, weather });
   };
 
   return (

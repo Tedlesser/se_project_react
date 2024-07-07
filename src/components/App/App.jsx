@@ -65,11 +65,9 @@ function App() {
         setClothingItems((cards) =>
           cards.filter((c) => c._id !== selectedCard._id)
         );
-      })
-      .catch(console.error)
-      .finally(() => {
         closeActiveModal();
-      });
+      })
+      .catch(console.error);
   };
 
   useEffect(() => {
