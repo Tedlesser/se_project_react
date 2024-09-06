@@ -14,6 +14,9 @@ import AddItemModal from "../AddItemModal/AddItemModal";
 import Profile from "../Profile/Profile";
 import api from "../../utils/api";
 import DeleteConfirmModal from "../DeleteConfirmModal/DeleteConfirmModal";
+import RegisterModal from "../RegisterModal/RegisterModal"
+import LoginModal from "../LoginModal/LoginModal";
+
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -25,6 +28,7 @@ function App() {
   const [selectedCard, setSelectedCard] = useState({});
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [clothingItems, setClothingItems] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const onCardClick = (card) => {
     setActiveModal("preview");
@@ -42,6 +46,55 @@ function App() {
   const closeActiveModal = () => {
     setActiveModal("");
   };
+
+  const handleLoginModal = () => {
+    setActiveModal("login");
+  };
+
+  const handleRegisterModal = () => {
+    setActiveModal("register");
+  };
+
+  // New Sign Up 
+  const handleSignUp = (newUser) => {
+    setIsLoading(true);
+    signUp({
+      email: newUser.email,
+      password: newUser.password,
+      name: newUser.name,
+      avatarUrl: newUser.avatarUrl,
+    })
+      .then(() => {
+        handleLogin({ email: newUser.email, password: newUser.password });
+        handleCloseModal();
+      })
+      .catch((error) => {
+        console.error("Error during sign up:", error);
+      })
+      .finally(() => setIsLoading(false));
+  };
+
+  //New Login 
+  const handleLogin = (user) => {
+    setIsLoading(true);
+    signIn(user.email, user.password)
+      .then((data) => {
+        return checkToken(data.token);
+      })
+      .then((data) => {
+        setIsLoggedIn(true);
+        setCurrentUser(data);
+        handleCloseModal();
+      })
+      .catch((error) => {
+        console.error("Error during login:", error);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  };
+
+
 
   const handleToggleSwitchChange = () => {
     if (currentTemperatureUnit === "C") setCurrentTemperatureUnit("F");
@@ -95,6 +148,7 @@ function App() {
       >
         <div className="page__content">
           <Header
+            handleRegisterModal = {handleRegisterModal}
             onAddButtonClick={onAddButtonClick}
             weatherData={weatherData}
           />
@@ -141,7 +195,16 @@ function App() {
           closeActiveModal={closeActiveModal}
           handleCardDelete={handleCardDelete}
         />
-
+        <RegisterModal
+          isOpen={activeModal === "register"}
+          onClose={closeActiveModal}
+          onSignUp={handleSignUp}
+        />
+        <LoginModal
+          onClose={closeActiveModal}
+          onLogin={handleLoginModal}
+          isOpen={activeModal === "login"}
+        />
         <Footer />
       </CurrentTemperatureUnitContext.Provider>
     </div>

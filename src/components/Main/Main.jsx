@@ -18,8 +18,6 @@ function Main({ weatherData, onCardClick, clothingItems }) {
       <ul className="cards__list">
         {clothingItems
           .filter((item) => {
-            console.log(11111111111);
-            console.log(item.weather, item.name, weatherData.type);
             return item.weather === weatherData.type;
           })
           .map((item) => {
