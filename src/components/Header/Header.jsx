@@ -11,7 +11,7 @@ const Header = ({
   currentUser,
   onCreateModal,
   handleRegisterModal,
-  onLoginModal,
+  handleLoginModal,
   getInitial,
 }) => {
   return (
@@ -56,7 +56,7 @@ const Header = ({
             <button className="header__sign-up-button" onClick={handleRegisterModal}>
               Sign Up
             </button>
-            <button className="header__log-in-button" onClick={onLoginModal}>
+            <button className="header__log-in-button" onClick={handleLoginModal}>
               Log In
             </button>
           </div>

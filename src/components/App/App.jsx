@@ -14,9 +14,9 @@ import AddItemModal from "../AddItemModal/AddItemModal";
 import Profile from "../Profile/Profile";
 import api from "../../utils/api";
 import DeleteConfirmModal from "../DeleteConfirmModal/DeleteConfirmModal";
-import RegisterModal from "../RegisterModal/RegisterModal"
+import RegisterModal from "../RegisterModal/RegisterModal";
 import LoginModal from "../LoginModal/LoginModal";
-
+import { signIn, signUp, checkToken } from "../../utils/auth"
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -55,14 +55,14 @@ function App() {
     setActiveModal("register");
   };
 
-  // New Sign Up 
+  // New Sign Up
   const handleSignUp = (newUser) => {
     setIsLoading(true);
     signUp({
       email: newUser.email,
       password: newUser.password,
       name: newUser.name,
-      avatarUrl: newUser.avatarUrl,
+      avatarUrl: newUser.avatar,
     })
       .then(() => {
         handleLogin({ email: newUser.email, password: newUser.password });
@@ -74,7 +74,7 @@ function App() {
       .finally(() => setIsLoading(false));
   };
 
-  //New Login 
+  //New Login
   const handleLogin = (user) => {
     setIsLoading(true);
     signIn(user.email, user.password)
@@ -93,8 +93,6 @@ function App() {
         setIsLoading(false);
       });
   };
-
-
 
   const handleToggleSwitchChange = () => {
     if (currentTemperatureUnit === "C") setCurrentTemperatureUnit("F");
@@ -148,7 +146,9 @@ function App() {
       >
         <div className="page__content">
           <Header
-            handleRegisterModal = {handleRegisterModal}
+            handleLoginModal={handleLoginModal}
+            onLoginModal={handleLoginModal}
+            handleRegisterModal={handleRegisterModal}
             onAddButtonClick={onAddButtonClick}
             weatherData={weatherData}
           />
@@ -202,8 +202,9 @@ function App() {
         />
         <LoginModal
           onClose={closeActiveModal}
-          onLogin={handleLoginModal}
+          onSubmit={handleLogin}
           isOpen={activeModal === "login"}
+          onLogin={handleLogin}
         />
         <Footer />
       </CurrentTemperatureUnitContext.Provider>
