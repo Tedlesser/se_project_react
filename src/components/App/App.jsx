@@ -29,6 +29,9 @@ function App() {
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [clothingItems, setClothingItems] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [currentUser, setCurrentUser] = useState(null);
+
 
   const onCardClick = (card) => {
     setActiveModal("preview");
@@ -62,11 +65,11 @@ function App() {
       email: newUser.email,
       password: newUser.password,
       name: newUser.name,
-      avatarUrl: newUser.avatar,
+      avatar: newUser.avatar,
     })
       .then(() => {
         handleLogin({ email: newUser.email, password: newUser.password });
-        handleCloseModal();
+        closeActiveModal();
       })
       .catch((error) => {
         console.error("Error during sign up:", error);
@@ -84,7 +87,7 @@ function App() {
       .then((data) => {
         setIsLoggedIn(true);
         setCurrentUser(data);
-        handleCloseModal();
+        closeActiveModal();
       })
       .catch((error) => {
         console.error("Error during login:", error);
