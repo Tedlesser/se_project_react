@@ -159,6 +159,8 @@ function App() {
             handleRegisterModal={handleRegisterModal}
             onAddButtonClick={onAddButtonClick}
             weatherData={weatherData}
+            currentUser={currentUser}
+            isAuthenticated={isAuthenticated}
           />
           <Routes>
             <Route
