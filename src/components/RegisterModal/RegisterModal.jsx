@@ -6,9 +6,7 @@ const RegisterModal = ({
   onSignUp, 
   isOpen, 
   onClose, 
-  buttonText, 
-  buttonTwoText, 
-  onButtonTwoSubmit,
+  buttonText,
 }) => {
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState(""); 
@@ -56,11 +54,9 @@ const RegisterModal = ({
     <ModalWithForm
       title="Sign Up"
       name="register-user"
-      buttonText={buttonText}
-      buttonTwoText={buttonTwoText}
+      buttonText="Submit"
       onClose={onClose}
       onSubmit={handleSubmit}
-      onButtonTwoSubmit={onButtonTwoSubmit}
       isOpen={isOpen}
     >
       <fieldset className="modal__inputs">

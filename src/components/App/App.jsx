@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 
 import "./App.css";
 import { coordinates, APIkey } from "../../utils/constants";
@@ -14,7 +14,9 @@ import AddItemModal from "../AddItemModal/AddItemModal";
 import Profile from "../Profile/Profile";
 import api from "../../utils/api";
 import DeleteConfirmModal from "../DeleteConfirmModal/DeleteConfirmModal";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import RegisterModal from "../RegisterModal/RegisterModal";
+import { CurrentUserContext } from "../../context/CurrentUserContext";
 import LoginModal from "../LoginModal/LoginModal";
 import { signIn, signUp, checkToken } from "../../utils/auth"
 
@@ -29,8 +31,9 @@ function App() {
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [clothingItems, setClothingItems] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const navigate = useNavigate();
 
 
   const onCardClick = (card) => {
@@ -78,16 +81,17 @@ function App() {
   };
 
   //New Login
-  const handleLogin = (user) => {
-    setIsLoading(true);
-    signIn(user.email, user.password)
+  const handleLogin = (newUser) => {
+    setIsAuthenticated(true);
+    signIn(newUser.email, newUser.password)
       .then((data) => {
         return checkToken(data.token);
       })
       .then((data) => {
-        setIsLoggedIn(true);
+        setIsAuthenticated(true);
         setCurrentUser(data);
         closeActiveModal();
+        navigate("/profile");
       })
       .catch((error) => {
         console.error("Error during login:", error);
@@ -147,6 +151,7 @@ function App() {
       <CurrentTemperatureUnitContext.Provider
         value={{ currentTemperatureUnit, handleToggleSwitchChange }}
       >
+        <CurrentUserContext.Provider value={{ currentUser }}>
         <div className="page__content">
           <Header
             handleLoginModal={handleLoginModal}
@@ -168,6 +173,7 @@ function App() {
                 />
               }
             />
+  
             <Route
               path="/profile"
               element={
@@ -210,6 +216,7 @@ function App() {
           onLogin={handleLogin}
         />
         <Footer />
+        </CurrentUserContext.Provider>
       </CurrentTemperatureUnitContext.Provider>
     </div>
   );

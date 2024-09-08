@@ -3,13 +3,16 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useState } from "react";
 import { useEffect } from "react";
 
+
 const LoginModal = ({
     onLogin, 
     isOpen, 
-    onClose,  
+    onClose, 
+    buttonText, 
 }) => {
     const [userEmail, setUserEmail] = useState("");
     const [userPassword, setUserPassword] = useState("");
+  
 
     useEffect(() => {
         if (isOpen === true) {
@@ -44,6 +47,7 @@ return (
       onClose={onClose}
       onSubmit={handleSubmit}
       isOpen={isOpen}
+      buttonText="Submit"
     >
     <fieldset className="modal__inputs">
         <label className="modal__label">

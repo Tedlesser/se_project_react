@@ -7,7 +7,7 @@ const Header = ({
   logo,
   currentDate,
   weatherData,
-  isLoggedIn,
+  isAuthenticated,
   currentUser,
   onCreateModal,
   handleRegisterModal,
@@ -26,7 +26,7 @@ const Header = ({
       </div>
       <div className="header__user-container-right">
         <ToggleSwitch />
-        {isLoggedIn ? (
+        {isAuthenticated ? (
           <div className="header__profile_loggedIn">
             <button
               className="header__add-clothing-button"
