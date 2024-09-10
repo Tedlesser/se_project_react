@@ -121,3 +121,11 @@
 .header__log-in-button:hover {
   opacity: 60%;
 }
+
+.header__user-container-left {
+  display: flex;
+}
+
+.header__user-container-right {
+  display: ruby;
+}

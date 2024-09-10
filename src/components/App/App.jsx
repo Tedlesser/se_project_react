@@ -19,6 +19,7 @@ import RegisterModal from "../RegisterModal/RegisterModal";
 import { CurrentUserContext } from "../../context/CurrentUserContext";
 import LoginModal from "../LoginModal/LoginModal";
 import { signIn, signUp, checkToken } from "../../utils/auth"
+import EditProfileModal from "../EditProfileModal/EditProfileModal"
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -82,9 +83,10 @@ function App() {
 
   //New Login
   const handleLogin = (newUser) => {
-    setIsAuthenticated(true);
+    setIsLoading(true);
     signIn(newUser.email, newUser.password)
       .then((data) => {
+        localStorage.setItem("token", data.token);
         return checkToken(data.token);
       })
       .then((data) => {
@@ -100,6 +102,33 @@ function App() {
         setIsLoading(false);
       });
   };
+
+  // Logout
+  const handleSignOut = () => {
+    localStorage.removeItem("jwt");
+    setIsAuthenticated(false);
+    setCurrentUser(null);
+    navigate("/");
+  };
+
+  // Handles edit profile changes
+  const handleEditProfile = (newUserData) => {
+    const token = localStorage.getItem("jwt"); 
+    if(!token) {
+      console.error("No token found, user might not be authenticated");
+      return;
+    }
+    setIsLoading(true); 
+    editUserProfile(newUserData.name, newUserData.avatar, token)
+      .then((updatedUser)=>{
+        setCurrentUser(updatedUser);
+        closeActiveModal()
+      })
+      .catch((error)=> {
+        console.error("Error during sign up:", error)
+      })
+      .finally(()=> setIsLoading(false));
+  }
 
   const handleToggleSwitchChange = () => {
     if (currentTemperatureUnit === "C") setCurrentTemperatureUnit("F");
@@ -146,6 +175,8 @@ function App() {
       .catch(console.error);
   }, []);
 
+  console.log(isAuthenticated)
+
   return (
     <div className="page">
       <CurrentTemperatureUnitContext.Provider
@@ -184,6 +215,8 @@ function App() {
                   clothingItems={clothingItems}
                   onClose={closeActiveModal}
                   onAddButtonClick={onAddButtonClick}
+                  onSignout={handleSignOut}
+                  onEditProfileModal={handleEditProfile}
                 />
               }
             />
@@ -216,6 +249,11 @@ function App() {
           onSubmit={handleLogin}
           isOpen={activeModal === "login"}
           onLogin={handleLogin}
+        />
+        <EditProfileModal
+          onClose={closeActiveModal}
+          onClick={handleLogin}
+          isOpen={activeModal}
         />
         <Footer />
         </CurrentUserContext.Provider>

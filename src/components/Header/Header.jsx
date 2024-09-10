@@ -26,7 +26,7 @@ const Header = ({
       </div>
       <div className="header__user-container-right">
         <ToggleSwitch />
-        {isAuthenticated ? (
+        {currentUser ? (
           <div className="header__profile_loggedIn">
             <button
               className="header__add-clothing-button"
