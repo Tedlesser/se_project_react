@@ -4,6 +4,7 @@ export const handleServerResponse = (res) => {
   return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
 };
 
+//Get items
 function getItems() {
   return fetch(`${baseUrl}/items`, {
     headers: {
@@ -12,6 +13,7 @@ function getItems() {
   }).then(handleServerResponse);
 }
 
+//Add items
 function addItems({ name, imageUrl, weather }) {
   console.log(name, imageUrl, weather);
   return fetch(`${baseUrl}/items`, {
@@ -27,19 +29,44 @@ function addItems({ name, imageUrl, weather }) {
   }).then(handleServerResponse);
 }
 
+//Remove items
 function removeItems(id) {
   return fetch(`${baseUrl}/items/${id}`, {
     method: "DELETE",
     headers: {
-      "Content-Type": "application/json",
+      "Content-Type": "application/json"
     },
   }).then(handleServerResponse);
+}
+
+// Edit user profile
+function editUserProfile({ name, avatar, token } = {}) {
+  if (!name || !avatar || !token) {
+    throw new Error("Missing required parameters: name, avatar, or token.");
+  }
+  
+  return fetch(`${baseUrl}/users/me`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json; charset=UTF-8",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({
+      name: name,
+      avatar: avatar,
+    }),
+  })
+    .then(handleServerResponse)
+    .then((data) => {
+      return data;
+    });
 }
 
 const api = {
   getItems,
   addItems,
   removeItems,
+  editUserProfile,
 };
 
 export default api;
