@@ -105,7 +105,7 @@ function App() {
 
   // Logout
   const handleSignOut = () => {
-    localStorage.removeItem("jwt");
+    localStorage.removeItem("token");
     setIsAuthenticated(false);
     setCurrentUser(null);
     navigate("/");
@@ -113,14 +113,14 @@ function App() {
 
   // Handles edit profile changes
   const handleEditProfile = (newUserData) => {
-    const token = localStorage.getItem("jwt"); 
+    const token = localStorage.getItem(token); 
     if(!token) {
       console.error("No token found, user might not be authenticated");
       return;
     }
     setIsLoading(true); 
-    api.
-    editUserProfile(newUserData.name, newUserData.avatar, token)
+      api
+      .editUserProfile(newUserData.name, newUserData.avatar, token)
       .then((updatedUser)=>{
         setCurrentUser(updatedUser);
         closeActiveModal()
