@@ -38,7 +38,6 @@
   border: none;
   max-width: 116px;
   max-height: 24px;
-  align-self: center;
   cursor: pointer;
 }
 
@@ -123,9 +122,22 @@
 }
 
 .header__user-container-left {
-  display: flex;
+  display: flex;  
 }
 
 .header__user-container-right {
-  display: ruby;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.header__profile_loggedIn {
+  margin: 0 0 0 20px;
+  display: flex;
+  flex-direction: row;
+}
+
+.header__profile-container {
+  display: flex;
+  align-items: center;
 }

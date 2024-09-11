@@ -44,6 +44,7 @@ const EditProfileModal = ({ onSubmit, isOpen, onClose, buttonText }) => {
       buttonText={buttonText}
       onClose={onClose}
       onSubmit={handleSubmit}
+      isOpen={isOpen}
     >
       <fieldset className="modal__inputs">
         <label className="modal__label">

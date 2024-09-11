@@ -2,10 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom"; // Ensure Link is imported
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch"; // Import ToggleSwitch if necessary
 import "./Header.css"
+import headerLogo from "../../assets/logo.svg"
 
 const Header = ({
   logo,
-  currentDate,
   weatherData,
   isAuthenticated,
   currentUser,
@@ -14,11 +14,15 @@ const Header = ({
   handleLoginModal,
   getInitial,
 }) => {
+  const currentDate = new Date().toLocaleString("default",{
+    month:"long", 
+    day: "numeric",
+  });
   return (
     <header className="header">
       <div className="header__user-container-left">
         <Link to="/">
-          <img className="header__logo" alt="WTWR Logo" src={logo} />
+          <img className="header__logo" alt="WTWR Logo" src={headerLogo} />
         </Link>
       <p className="header__date-and-location">
         {currentDate}, {weatherData.city}
@@ -35,6 +39,7 @@ const Header = ({
               + Add clothes
             </button>
             <Link to="/profile" className="profile__link">
+            <div className="header__profile-container">
               <p className="header__profile-name">{currentUser.name}</p>
               {currentUser.avatar ? (
                 <img
@@ -45,10 +50,11 @@ const Header = ({
               ) : (
                 <div className="header__profile-avatar_placeholder">
                   <p className="header__profile-avatar_placeholder-initial">
-                    {getInitial(currentUser.name)}
+                    {(currentUser.name)}
                   </p>
                 </div>
               )}
+            </div>
             </Link>
           </div>
         ) : (

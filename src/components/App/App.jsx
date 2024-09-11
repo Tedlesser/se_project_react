@@ -5,7 +5,7 @@ import "./App.css";
 import { coordinates, APIkey } from "../../utils/constants";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
-import ModalWithForm from "../ModalWithForm/ModalWithForm";
+// import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import ItemModal from "../ItemModal/ItemModal";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import Footer from "../Footer/Footer";
@@ -14,7 +14,7 @@ import AddItemModal from "../AddItemModal/AddItemModal";
 import Profile from "../Profile/Profile";
 import api from "../../utils/api";
 import DeleteConfirmModal from "../DeleteConfirmModal/DeleteConfirmModal";
-import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
+// import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import { CurrentUserContext } from "../../context/CurrentUserContext";
 import LoginModal from "../LoginModal/LoginModal";
@@ -62,6 +62,10 @@ function App() {
     setActiveModal("register");
   };
 
+  const openProfileModal = () => {
+    setActiveModal("profile-edit");
+  }
+
   // New Sign Up
   const handleSignUp = (newUser) => {
     setIsLoading(true);
@@ -105,22 +109,22 @@ function App() {
 
   // Logout
   const handleSignOut = () => {
-    localStorage.removeItem("token");
+    localStorage.removeItem("jwt");
     setIsAuthenticated(false);
     setCurrentUser(null);
     navigate("/");
   };
 
   // Handles edit profile changes
-  const handleEditProfile = (newUserData) => {
-    const token = localStorage.getItem(token); 
+  const handleEditProfileSubmit = (newUserData) => {
+    const token = localStorage.getItem("jwt"); 
     if(!token) {
       console.error("No token found, user might not be authenticated");
       return;
     }
     setIsLoading(true); 
       api
-      .editUserProfile(newUserData.name, newUserData.avatar, token)
+      .editUserProfile({ name:newUserData.name, avatar: newUserData.avatar, token})
       .then((updatedUser)=>{
         setCurrentUser(updatedUser);
         closeActiveModal()
@@ -193,6 +197,7 @@ function App() {
             weatherData={weatherData}
             currentUser={currentUser}
             isAuthenticated={isAuthenticated}
+            getInitial={() => {}}
           />
           <Routes>
             <Route
@@ -217,7 +222,7 @@ function App() {
                   onClose={closeActiveModal}
                   onAddButtonClick={onAddButtonClick}
                   onSignout={handleSignOut}
-                  onEditProfileModal={handleEditProfile}
+                  onEditProfileModal={openProfileModal}
                 />
               }
             />
@@ -254,7 +259,8 @@ function App() {
         <EditProfileModal
           onClose={closeActiveModal}
           onClick={handleLogin}
-          isOpen={activeModal}
+          isOpen={activeModal === "profile-edit"}
+          onSubmit={handleEditProfileSubmit}
         />
         <Footer />
         </CurrentUserContext.Provider>
