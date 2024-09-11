@@ -86,7 +86,7 @@ function App() {
     setIsLoading(true);
     signIn(newUser.email, newUser.password)
       .then((data) => {
-        localStorage.setItem("token", data.token);
+        localStorage.setItem("jwt", data.token);
         return checkToken(data.token);
       })
       .then((data) => {
@@ -119,6 +119,7 @@ function App() {
       return;
     }
     setIsLoading(true); 
+    api.
     editUserProfile(newUserData.name, newUserData.avatar, token)
       .then((updatedUser)=>{
         setCurrentUser(updatedUser);
