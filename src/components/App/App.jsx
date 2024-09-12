@@ -141,8 +141,13 @@ function App() {
   };
 
   const handleAddItemSubmit = ({ name, imageUrl, weather }) => {
+    const token = localStorage.getItem("jwt"); 
+    if(!token) {
+      console.error("No token found, user might not be authenticated");
+      return;
+    }
     api
-      .addItems({ name, imageUrl, weather })
+      .addItems({ name, imageUrl, weather, token })
       .then((newItem) => {
         setClothingItems([newItem, ...clothingItems]);
         closeActiveModal();
@@ -151,8 +156,13 @@ function App() {
   };
 
   const handleCardDelete = () => {
+    const token = localStorage.getItem("jwt"); 
+    if(!token) {
+      console.error("No token found, user might not be authenticated");
+      return;
+    }
     api
-      .removeItems(selectedCard._id)
+      .removeItems(selectedCard._id, token)
       .then(() => {
         setClothingItems((cards) =>
           cards.filter((c) => c._id !== selectedCard._id)

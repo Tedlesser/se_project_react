@@ -13,6 +13,8 @@ const Header = ({
   handleRegisterModal,
   handleLoginModal,
   getInitial,
+  onAddButtonClick
+  
 }) => {
   const currentDate = new Date().toLocaleString("default",{
     month:"long", 
@@ -34,7 +36,7 @@ const Header = ({
           <div className="header__profile_loggedIn">
             <button
               className="header__add-clothing-button"
-              onClick={onCreateModal}
+              onClick={onAddButtonClick}
             >
               + Add clothes
             </button>
