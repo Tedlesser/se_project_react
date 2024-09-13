@@ -44,7 +44,7 @@ function removeItems(id, token) {
 }
 
 // Edit user profile
-function editUserProfile({ name, avatar, token } = {}) {
+function editUserProfile({ name, avatar, token }) {
   if (!name || !avatar || !token) {
     throw new Error("Missing required parameters: name, avatar, or token.");
   }
@@ -66,11 +66,43 @@ function editUserProfile({ name, avatar, token } = {}) {
     });
 }
 
+// Like item 
+function addLikeItem ({itemId, token}) {
+  return fetch(`${baseUrl}/items/${itemId}/likes`, {
+    method: "PUT", 
+    headers: { 
+      "Content-Type": "application/json; charset=UTF-8",
+      Authorization: `Bearer ${token}`,
+    },
+  })
+  .then(handleServerResponse)
+    .then((data) => {
+      return data;
+    });
+}
+
+// Dislike Item
+function removeLikeItem ({itemId, token}) {
+  return fetch(`${baseUrl}/items/${itemId}/likes`, {
+    method: "DELETE", 
+    headers: { 
+      "Content-Type": "application/json; charset=UTF-8",
+      Authorization: `Bearer ${token}`,
+    },
+  })
+  .then(handleServerResponse)
+    .then((data) => {
+      return data;
+    });
+}
+
 const api = {
   getItems,
   addItems,
   removeItems,
   editUserProfile,
+  addLikeItem, 
+  removeLikeItem,
 };
 
 export default api;

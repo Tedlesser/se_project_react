@@ -2,7 +2,7 @@ import ItemCard from "../ItemCard/ItemCard";
 import WeatherCard from "../WeatherCard/WeatherCard";
 import "./ClothesSection.css";
 
-function ClothesSection({ onCardClick, onAddButtonClick, clothingItems }) {
+function ClothesSection({ onCardClick, onAddButtonClick, clothingItems, onItemLike}) {
   return (
     <div className="clothes-section">
       <div className="clothes-header">
@@ -14,7 +14,7 @@ function ClothesSection({ onCardClick, onAddButtonClick, clothingItems }) {
       <ul className="clothes-section__list">
         {clothingItems.map((item) => {
           return (
-            <ItemCard key={item._id} item={item} onCardClick={onCardClick} />
+            <ItemCard key={item._id} item={item} onCardClick={onCardClick} onItemLike={onItemLike}/>
           );
         })}
       </ul>

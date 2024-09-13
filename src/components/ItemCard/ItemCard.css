@@ -16,8 +16,6 @@
 .card__name {
     font-family: "Cabinet Grotesk";
     font-size: 16px;
-    position: absolute;
-    top: 15px;
     line-height: 20px;
     text-align: left;
     font-weight: 700;
@@ -35,3 +33,27 @@
     width: 100%;
     border-radius: 15px;
     }
+
+.card__like-button {
+    background-image: url(../../assets/unliked.svg);
+    background-repeat: no-repeat;
+    border: none;
+    width: 18px;
+    height: 15px;
+    background-color: transparent;
+    background-size: contain;
+    background-position: center;
+}
+
+.card__title-container {
+    position: absolute;
+    top: 15px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.card__like-button_active {
+    background-image: url(../../assets/liked.svg);
+
+}
