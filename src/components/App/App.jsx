@@ -14,7 +14,7 @@ import AddItemModal from "../AddItemModal/AddItemModal";
 import Profile from "../Profile/Profile";
 import api from "../../utils/api";
 import DeleteConfirmModal from "../DeleteConfirmModal/DeleteConfirmModal";
-// import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import { CurrentUserContext } from "../../context/CurrentUserContext";
 import LoginModal from "../LoginModal/LoginModal";
@@ -259,7 +259,7 @@ function App() {
 
               <Route
                 path="/profile"
-                element={
+                element={<ProtectedRoute isAuthenticated={isAuthenticated}>
                   <Profile
                     onCardClick={onCardClick}
                     clothingItems={clothingItems}
@@ -269,6 +269,7 @@ function App() {
                     onEditProfileModal={openProfileModal}
                     onItemLike={handleLikeItem}
                   />
+                    </ProtectedRoute>
                 }
               />
             </Routes>
