@@ -34,6 +34,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isLoggedInLoading, setIsLoggedInLoading] = useState(true);
   const navigate = useNavigate();
 
   const onCardClick = (card) => {
@@ -177,6 +178,8 @@ function App() {
       .catch(console.error);
   };
 
+  
+
   useEffect(() => {
     getWeather(coordinates, APIkey)
       .then((data) => {
@@ -195,9 +198,35 @@ function App() {
       .catch(console.error);
   }, []);
 
+  //use effect to check if there is a jwt token
+
+  useEffect(() => {
+    const token = localStorage.getItem("jwt");
+    if (token) {
+      fetchUserInfo(token);
+    } else {
+      setIsLoggedInLoading(false);
+    }
+  }, []); // <-- Add the dependency array here to avoid infinite loops
+  
+  const fetchUserInfo = (token) => {
+    checkToken(token)
+      .then((res) => {
+        if (res) {
+          setIsAuthenticated(true);
+          setCurrentUser(res);
+        } else {
+          localStorage.removeItem("jwt");
+        }
+      })
+      .catch((err) => console.error(err))
+      .finally(() => {
+        setIsLoggedInLoading(false);
+      });
+  };
+
   // Handles like button
   const handleLikeItem = ({ itemId, isLiked }) => {
-    console.log({ itemId, isLiked });
     const token = localStorage.getItem("jwt");
     if (!token) {
       console.error("No token found, suer might not be authenticated");
@@ -269,7 +298,7 @@ function App() {
                     onEditProfileModal={openProfileModal}
                     onItemLike={handleLikeItem}
                   />
-                    </ProtectedRoute>
+                  </ProtectedRoute>
                 }
               />
             </Routes>

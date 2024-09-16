@@ -17,7 +17,6 @@ function getItems() {
 
 //Add items
 function addItems({ name, imageUrl, weather, token }) {
-  console.log(name, imageUrl, weather, token);
   return fetch(`${baseUrl}/items`, {
     method: "POST",
     headers: {
@@ -95,6 +94,8 @@ function removeLikeItem ({itemId, token}) {
       return data;
     });
 }
+
+
 
 const api = {
   getItems,
