@@ -178,8 +178,6 @@ function App() {
       .catch(console.error);
   };
 
-  
-
   useEffect(() => {
     getWeather(coordinates, APIkey)
       .then((data) => {
@@ -208,7 +206,7 @@ function App() {
       setIsLoggedInLoading(false);
     }
   }, []); // <-- Add the dependency array here to avoid infinite loops
-  
+
   const fetchUserInfo = (token) => {
     checkToken(token)
       .then((res) => {
@@ -287,16 +285,20 @@ function App() {
 
               <Route
                 path="/profile"
-                element={<ProtectedRoute isAuthenticated={isAuthenticated} isLoggedInLoading={isLoggedInLoading}>
-                  <Profile
-                    onCardClick={onCardClick}
-                    clothingItems={clothingItems}
-                    onClose={closeActiveModal}
-                    onAddButtonClick={onAddButtonClick}
-                    onSignout={handleSignOut}
-                    onEditProfileModal={openProfileModal}
-                    onItemLike={handleLikeItem}
-                  />
+                element={
+                  <ProtectedRoute
+                    isAuthenticated={isAuthenticated}
+                    isLoggedInLoading={isLoggedInLoading}
+                  >
+                    <Profile
+                      onCardClick={onCardClick}
+                      clothingItems={clothingItems}
+                      onClose={closeActiveModal}
+                      onAddButtonClick={onAddButtonClick}
+                      onSignout={handleSignOut}
+                      onEditProfileModal={openProfileModal}
+                      onItemLike={handleLikeItem}
+                    />
                   </ProtectedRoute>
                 }
               />
@@ -324,6 +326,7 @@ function App() {
             isOpen={activeModal === "register"}
             onClose={closeActiveModal}
             onSignUp={handleSignUp}
+            handleLoginModal={handleLoginModal}
           />
           <LoginModal
             onClose={closeActiveModal}
