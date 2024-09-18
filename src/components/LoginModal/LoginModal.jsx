@@ -77,6 +77,9 @@ return (
             />
         </label>
     </fieldset>
+    <button type="submit" className="modal__submit">
+            submit
+    </button>
   </ModalWithForm>
   );
 };

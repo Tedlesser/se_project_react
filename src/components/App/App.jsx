@@ -130,7 +130,7 @@ function App() {
         token,
       })
       .then((updatedUser) => {
-        setCurrentUser(updatedUser);
+        setCurrentUser(updatedUser.data);
         closeActiveModal();
       })
       .catch((error) => {
@@ -260,7 +260,7 @@ function App() {
       <CurrentTemperatureUnitContext.Provider
         value={{ currentTemperatureUnit, handleToggleSwitchChange }}
       >
-        <CurrentUserContext.Provider value={{ currentUser }}>
+        <CurrentUserContext.Provider value={{ currentUser, isAuthenticated }}>
           <div className="page__content">
             <Header
               handleLoginModal={handleLoginModal}
@@ -268,7 +268,6 @@ function App() {
               handleRegisterModal={handleRegisterModal}
               onAddButtonClick={onAddButtonClick}
               weatherData={weatherData}
-              currentUser={currentUser}
               isAuthenticated={isAuthenticated}
               getInitial={() => {}}
             />
@@ -288,7 +287,7 @@ function App() {
 
               <Route
                 path="/profile"
-                element={<ProtectedRoute isAuthenticated={isAuthenticated}>
+                element={<ProtectedRoute isAuthenticated={isAuthenticated} isLoggedInLoading={isLoggedInLoading}>
                   <Profile
                     onCardClick={onCardClick}
                     clothingItems={clothingItems}
@@ -314,6 +313,7 @@ function App() {
             card={selectedCard}
             onClose={closeActiveModal}
             onClick={deleteConfirmModal}
+            isAuthenticated={isAuthenticated}
           />
           <DeleteConfirmModal
             isOpen={activeModal === "delete-garment"}

@@ -3,16 +3,13 @@ import { Link } from "react-router-dom"; // Ensure Link is imported
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch"; // Import ToggleSwitch if necessary
 import "./Header.css"
 import headerLogo from "../../assets/logo.svg"
+import { CurrentUserContext } from "../../context/CurrentUserContext";
+import { useContext } from "react";
 
 const Header = ({
-  logo,
   weatherData,
-  isAuthenticated,
-  currentUser,
-  onCreateModal,
   handleRegisterModal,
   handleLoginModal,
-  getInitial,
   onAddButtonClick
   
 }) => {
@@ -20,6 +17,8 @@ const Header = ({
     month:"long", 
     day: "numeric",
   });
+  const { currentUser } = useContext(CurrentUserContext)
+  
   return (
     <header className="header">
       <div className="header__user-container-left">
@@ -62,7 +61,7 @@ const Header = ({
         ) : (
           <div className="header__profile_loggedOut">
             <button className="header__sign-up-button" onClick={handleRegisterModal}>
-              Sign Up
+              Sign Up 
             </button>
             <button className="header__log-in-button" onClick={handleLoginModal}>
               Log In

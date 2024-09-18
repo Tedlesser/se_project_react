@@ -41,7 +41,7 @@ const EditProfileModal = ({ onSubmit, isOpen, onClose, buttonText }) => {
     <ModalWithForm
       title="Change profile data"
       name="edit-profile"
-      buttonText={buttonText}
+      buttonText="submit"
       onClose={onClose}
       onSubmit={handleSubmit}
       isOpen={isOpen}
@@ -74,6 +74,9 @@ const EditProfileModal = ({ onSubmit, isOpen, onClose, buttonText }) => {
           />
         </label>
       </fieldset>
+      <button type="submit" className="modal__submit">
+            submit
+          </button>
     </ModalWithForm>
   );
 };
