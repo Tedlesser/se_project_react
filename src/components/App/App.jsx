@@ -334,6 +334,7 @@ function App() {
             onSubmit={handleLogin}
             isOpen={activeModal === "login"}
             onLogin={handleLogin}
+            handleRegisterModal={handleRegisterModal}
           />
           <EditProfileModal
             onClose={closeActiveModal}
