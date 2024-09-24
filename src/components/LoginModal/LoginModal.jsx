@@ -78,7 +78,7 @@ return (
         </label>
     </fieldset>
     <button type="submit" className="modal__submit">
-            submit
+            Log in
     </button>
   </ModalWithForm>
   );

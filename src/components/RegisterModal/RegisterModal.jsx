@@ -115,7 +115,7 @@ const RegisterModal = ({
         </label>
       </fieldset>
       <div className="modal__button-container">
-      <button type="submit" className="modal__submit" onSubmit={handleSubmit} > submit</button>
+      <button type="submit" className="modal__submit" onSubmit={handleSubmit} > Sign Up </button>
       <button type="button" className="modal__login" onClick={handleLoginModal}> or Login</button>
       </div>
     </ModalWithForm>

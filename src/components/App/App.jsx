@@ -279,6 +279,7 @@ function App() {
                     clothingItems={clothingItems}
                     onClose={closeActiveModal}
                     handleCardDelete={handleCardDelete}
+                    onItemLike={handleLikeItem}
                   />
                 }
               />
