@@ -54,13 +54,13 @@ function App() {
     setActiveModal("");
   };
 
-  const handleLoginModal = () => {
-    event.preventDefault();
+  const handleLoginModal = (e) => {
+    e.preventDefault();
     setActiveModal("login");
   };
 
-  const handleRegisterModal = () => {
-    event.preventDefault();
+  const handleRegisterModal = (e) => {
+    e.preventDefault();
     setActiveModal("register");
   };
 
