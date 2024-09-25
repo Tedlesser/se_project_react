@@ -55,10 +55,12 @@ function App() {
   };
 
   const handleLoginModal = () => {
+    event.preventDefault();
     setActiveModal("login");
   };
 
   const handleRegisterModal = () => {
+    event.preventDefault();
     setActiveModal("register");
   };
 
