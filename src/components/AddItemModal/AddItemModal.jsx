@@ -97,7 +97,7 @@ const AddItemModal = ({
         </label>
       </fieldset>
       <button type="submit" className="modal__submit">
-        Submit
+        Add garment
       </button>
     </ModalWithForm>
   );
