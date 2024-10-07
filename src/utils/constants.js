@@ -114,4 +114,9 @@ export const coordinates = {
   longitude: -74.069382,
 };
 
+export const baseUrl = process.env.NODE_ENV === "production" 
+? "https://api.wtwr.photo-frame.com"
+: "http://localhost:3001";
+
 export const APIkey = "358c55fab7b31b34a4b1a44f4c5f694f";
+
